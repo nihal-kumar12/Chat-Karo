@@ -18,9 +18,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: '*', // Allow only your Netlify domain
+  origin: '*',
   methods: 'GET,POST,PUT,DELETE',
-  credentials: true, // Allow cookies if needed
 })); // enable cors for cross-origin requests
 
 const PORT = process.env.PORT || 4001;

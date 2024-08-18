@@ -26,7 +26,7 @@ function Users() {
           <p>No users found.</p>
         ) : (
           usersList.map((user, index) => (
-            <User key={index} user={user} />
+            <User key={user.id || index} user={user} />
           ))
         )}
       </div>

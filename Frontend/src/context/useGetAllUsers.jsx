@@ -12,9 +12,9 @@ function useGetAllUsers() {
       try {
         const token = Cookies.get("jwt");
         const response = await axios.get(
-          `/user/allusers`,
+          `${import.meta.env.VITE_API_BASE_URL}/user/allusers`, // Ensure the correct base URL
           {
-            withCredentials: true, // Corrected here
+            withCredentials: true,
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -24,12 +24,12 @@ function useGetAllUsers() {
       } catch (error) {
         console.error("Error in useGetAllUsers:", error);
       } finally {
-        setLoading(false); // Ensure loading is set to false in both success and error cases
+        setLoading(false);
       }
     };
 
     getUsers();
-  }, []); // Dependency array is empty, meaning this effect runs only once after the initial render
+  }, []);
 
   return [allUsers, loading];
 }
