@@ -13,12 +13,6 @@ function useGetAllUsers() {
         const token = Cookies.get("jwt");
         const response = await axios.get(
           `${import.meta.env.VITE_API_BASE_URL}/user/allusers`, // Ensure the correct base URL
-          {
-            withCredentials: true,
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
         );
         setAllUsers(response.data);
       } catch (error) {
