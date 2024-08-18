@@ -77,6 +77,7 @@ export const allUsers=async(req,res)=>{
           }).select("-password");
           
         res.status(201).json(filteredUsers);
+        console.log(filteredUsers);
         
     } catch (error) {
         console.log("Error in allUsers Controller: " + error);
