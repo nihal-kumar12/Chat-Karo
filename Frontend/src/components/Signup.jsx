@@ -30,6 +30,7 @@ function Signup() {
       fullname: data.fullname,
       email: data.email,
       password: data.password,
+      confirmPassword: data.confirmPassword,
     };
 
     try {
@@ -45,7 +46,7 @@ function Signup() {
       }
     } catch (error) {
       if (error.response) {
-        toast.error(`Error: ${error.response.data.error || "An error occurred"}`);
+        toast.error(`Error: ${error.response.data.error}`);
       } else {
         toast.error("An unexpected error occurred. Please try again.");
       }
@@ -78,12 +79,12 @@ function Signup() {
             type="text" 
             className="grow" 
             placeholder="Fullname" 
-            {...register("fullname", { required: "Fullname is required" })} 
+            {...register("fullname", { required: true })} 
           />
         </label>
         {errors.fullname && (
           <span className="text-red-500 text-sm font-semibold">
-            {errors.fullname.message}
+            This field is required
           </span>
         )}
 
@@ -102,12 +103,12 @@ function Signup() {
             type="email" 
             className="grow" 
             placeholder="Email"
-            {...register("email", { required: "Email is required" })} 
+            {...register("email", { required: true })} 
           />
         </label>
         {errors.email && (
           <span className="text-red-500 text-sm font-semibold">
-            {errors.email.message}
+            This field is required
           </span>
         )}
 
@@ -129,12 +130,12 @@ function Signup() {
             type="password" 
             className="grow" 
             placeholder="Password"
-            {...register("password", { required: "Password is required" })} 
+            {...register("password", { required: true })} 
           />
         </label>
         {errors.password && (
           <span className="text-red-500 text-sm font-semibold">
-            {errors.password.message}
+            This field is required
           </span>
         )}
 
@@ -156,7 +157,7 @@ function Signup() {
             type="password" 
             className="grow" 
             placeholder="Confirm Password"
-            {...register("confirmPassword", { required: "Please confirm your password", validate: validatePasswordMatch })} 
+            {...register("confirmPassword", { required: true, validate: validatePasswordMatch })} 
           />
         </label>
         {errors.confirmPassword && (
@@ -174,7 +175,7 @@ function Signup() {
             </Link>
           </p>
           <input 
-            type="submit" 
+            type="Submit" 
             value="Signup" 
             className="text-white bg-green-500 px-2 py-1 cursor-pointer rounded-lg"
           />
