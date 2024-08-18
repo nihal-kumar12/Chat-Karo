@@ -29,8 +29,9 @@ try {
     console.log(error);
 }
 //routes
-app.use("/api/user", userRoute);
-app.use("/api/message", messageRoute);
+app.use("/", userRoute);
+app.use("/message", messageRoute);
+
 
 //-----------code for deployment--------
 // if(process.env.NODE_ENV === 'production'){
