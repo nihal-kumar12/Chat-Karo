@@ -83,5 +83,8 @@ export const allUsers=async(req,res)=>{
     }
 
 };
+export const check=async(req,res)=>{
+    res.status(200).json({message: "it works!"});
+}
         
         
