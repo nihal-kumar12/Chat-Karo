@@ -7,8 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: 'https://text-karo-1.onrender.com/10000',
-        
+        target: 'https://text-karo-1.onrender.com:10000',
         changeOrigin: true,
       },
     },
