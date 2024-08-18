@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://main--texxapp.netlify.app', // Allow only your Netlify domain
+  origin: '*', // Allow only your Netlify domain
   methods: 'GET,POST,PUT,DELETE',
   credentials: true, // Allow cookies if needed
 })); // enable cors for cross-origin requests
