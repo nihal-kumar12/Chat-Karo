@@ -69,21 +69,17 @@ export const logout=async(req,res)=>{
     }
 };
 
-export const allUsers=async(req,res)=>{
+export const allUsers = async (req, res) => {
     try {
-        const loggedInUser=req.user._id;
-        const filteredUsers = await User.find({
-            _id: { $ne: loggedInUser },
-          }).select("-password");
-          
-        res.status(201).json(filteredUsers);
+        const filteredUsers = await User.find().select("-password"); // Remove the password field
+        res.status(200).json(filteredUsers); // Changed status to 200 for successful response
         console.log(filteredUsers);
-        
     } catch (error) {
-        console.log("Error in allUsers Controller: " + error);
+        console.error("Error in allUsers Controller:", error);
+        res.status(500).json({ error: "Internal Server Error" });
     }
-
 };
+
 export const check=async(req,res)=>{
     res.status(200).json({message: "it works!"});
 }
