@@ -5,7 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 4001,
     proxy: {
       "/api": {
         target: 'https://chat-karoo.onrender.com',
