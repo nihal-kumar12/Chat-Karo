@@ -17,7 +17,11 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors()); // enable cors for cross-origin requests
+app.use(cors({
+  origin: 'https://main--texxapp.netlify.app', // Allow only your Netlify domain
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true, // Allow cookies if needed
+})); // enable cors for cross-origin requests
 
 const PORT = process.env.PORT || 4001;
 const URI = process.env.MONGODB_URI;
