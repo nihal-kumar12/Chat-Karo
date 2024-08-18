@@ -20,7 +20,8 @@ function Login() {
             password: data.password,
         }
         //console.log(userInfo);
-        axios.post("/api/user/login", userInfo)
+        
+        axios.post("/user/login", userInfo)
         .then((response) => {
             
             if(response.data){

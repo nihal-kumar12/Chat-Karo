@@ -7,7 +7,8 @@ const app = express()
 const server = http.createServer(app);
 const io=new Server(server,{
     cors: {
-        origin: "https://chat-karo-umber.vercel.app",
+        // origin: "https://chat-karo-umber.vercel.app",
+        origin:"http://localhost:5173" ,
         // origin: "https://texxtkaro.netlify.app/login",
         methods: ["GET", "POST"],
         
