@@ -21,7 +21,7 @@ function Login() {
         }
         //console.log(userInfo);
         
-        axios.post("/user/login", userInfo)
+        axios.post("api/user/login", userInfo)
         .then((response) => {
             
             if(response.data){
