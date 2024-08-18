@@ -21,7 +21,7 @@ function Login() {
         }
         //console.log(userInfo);
         
-        axios.post("api/user/login", userInfo)
+        axios.post(`${import.meta.env.VITE_API_BASE_URL}/user/login`, userInfo)
         .then((response) => {
             
             if(response.data){

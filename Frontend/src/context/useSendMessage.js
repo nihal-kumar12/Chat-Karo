@@ -1,26 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import useConversation from '../zustand/useConversation.js';
-
 import axios from 'axios';
 
 const useSendMessage = () => {
     const [loading, setLoading] = useState(false);
-    const {messages,setMessage,selectedConversation} = useConversation();
-    const sendMessages=async (message)=>{
+    const { messages, setMessage, selectedConversation } = useConversation();
+
+    const sendMessage = async (message) => {
         setLoading(true);
-            
         try {
-            const res=await axios.post(
-                `/api/message/send/${selectedConversation._id}`,{message}
+            const res = await axios.post(
+                `/message/send/${selectedConversation._id}`,
+                { message }
             );
-            setMessage([...messages,res.data]);
-            setLoading(false);
+            setMessage(prevMessages => [...prevMessages, res.data]);
         } catch (error) {
-            console.log("Error in send messages",error);
+            console.error("Error sending message:", error);
+            // Optionally set an error state or display a notification
+        } finally {
             setLoading(false);
         }
     };
-  return {loading, sendMessages};
+
+    return { loading, sendMessage };
 };
 
 export default useSendMessage;

@@ -4,27 +4,29 @@ import axios from "axios";
 
 const useGetMessage = () => {
     const [loading, setLoading] = useState(false);
-    const {messages,setMessage,selectedConversation} = useConversation();
+    const { messages, setMessage, selectedConversation } = useConversation();
 
     useEffect(() => {
         const getMessages = async () => {
             setLoading(true);
-            if(selectedConversation && selectedConversation._id){
+            if (selectedConversation && selectedConversation._id) {
                 try {
-                    const res=await axios.get(
-                        `/api/message/get/${selectedConversation._id}`,{messages}
-                    );
+                    const res = await axios.get(`/message/get/${selectedConversation._id}`);
                     setMessage(res.data);
-                    setLoading(false);
                 } catch (error) {
-                    console.log("Error in getting messages",error);
+                    console.error("Error in getting messages:", error);
+                } finally {
                     setLoading(false);
                 }
+            } else {
+                setLoading(false); // Ensure loading is set to false if no conversation is selected
             }
         };
+
         getMessages();
-    },[selectedConversation,setMessage]);
-    return {loading,messages};
+    }, [selectedConversation, setMessage]); // Removed `messages` from dependencies
+
+    return { loading, messages };
 };
 
 export default useGetMessage;
