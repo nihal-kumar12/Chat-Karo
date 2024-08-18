@@ -76,11 +76,9 @@ function Signup() {
           </svg>
           <input 
             type="text" 
-            name="fullname"
             className="grow" 
             placeholder="Fullname" 
             {...register("fullname", { required: "Fullname is required" })} 
-            aria-required="true"
           />
         </label>
         {errors.fullname && (
@@ -102,11 +100,9 @@ function Signup() {
           </svg>
           <input 
             type="email" 
-            name="email"
             className="grow" 
             placeholder="Email"
             {...register("email", { required: "Email is required" })} 
-            aria-required="true"
           />
         </label>
         {errors.email && (
@@ -131,11 +127,9 @@ function Signup() {
           </svg>
           <input 
             type="password" 
-            name="password"
             className="grow" 
             placeholder="Password"
             {...register("password", { required: "Password is required" })} 
-            aria-required="true"
           />
         </label>
         {errors.password && (
@@ -160,14 +154,9 @@ function Signup() {
           </svg>
           <input 
             type="password" 
-            name="confirmPassword"
             className="grow" 
             placeholder="Confirm Password"
-            {...register("confirmPassword", { 
-              required: "Please confirm your password", 
-              validate: validatePasswordMatch 
-            })} 
-            aria-required="true"
+            {...register("confirmPassword", { required: "Please confirm your password", validate: validatePasswordMatch })} 
           />
         </label>
         {errors.confirmPassword && (
